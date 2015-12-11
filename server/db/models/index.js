@@ -4,3 +4,4 @@
 require('./user');
 require('./chef');
 require('./partner');
+require('./event');
