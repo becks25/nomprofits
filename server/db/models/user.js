@@ -6,23 +6,23 @@ var schema = new mongoose.Schema({
     email: {
         type: String
     },
-    password: {
+    username: {
         type: String
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
     },
     salt: {
         type: String
     },
-    twitter: {
-        id: String,
-        username: String,
-        token: String,
-        tokenSecret: String
-    },
-    facebook: {
-        id: String
-    },
-    google: {
-        id: String
+    isSuperAdmin: {
+        type: Boolean,
+        default: false
     }
 });
 
