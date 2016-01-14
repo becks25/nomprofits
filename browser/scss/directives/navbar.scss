@@ -1,21 +1,12 @@
 navbar {
 
-  display: block;
-  background: white;
-  border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black;
-
   .container {
-    width: 91%;
+    width: 100%;
     max-width: 1340px;
-    padding-top: 20px;
+    padding:20px 2% 0 2%;
+
   }
 
-  fullstack-logo {
-    margin-top: 5px;
-    margin-right: 20px;
-    width: 40px;
-  }
 
   a {
     color: black;
@@ -37,24 +28,6 @@ navbar {
     }
   }
 
-  .login-button {
-    float: right;
-    border: 1px solid black;
-    margin-top: 10px;
-    background: none;
-    outline: none !important;
-  }
-
-  .welcome {
-    float: right;
-    margin-top: 12px;
-    span {
-      color: white;
-    }
-    a {
-      color: #f30046;
-      cursor: pointer;
-    }
-  }
+ 
 
 }

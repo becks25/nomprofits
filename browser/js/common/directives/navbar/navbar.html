@@ -1,17 +1,22 @@
-<nav class="navbar navbar-static-top">
+<nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
         <div class="navbar-header">
-            <fullstack-logo></fullstack-logo>
+            Nomprofits
         </div>
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-right">
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
         </ul>
         
-        <div ng-show="user" class="welcome">
+       <!--  <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>
-        </div>
+        </div> -->
     </div>
+</nav>
+
+<nav class="navbar navbar-static-top navbar-inverse">
+    <div class="container">
+</div>
 </nav>

@@ -59,7 +59,7 @@ describe('Users Route', function () {
 			name: 'Jake',
 			email: 'jake@email',
 			password: 'password'
-		}
+		};
 
 		var user3Id;
 
@@ -80,10 +80,8 @@ describe('Users Route', function () {
 			loggedInAgent.post('/login').send(userInfo).end(done);
 			});
 
-		console.log('user', user3Id);
 			it('should get a 200 response and with an array as the body', function (done) {
 				loggedInAgent.get('/api/users').end(function (err, response) {
-				console.log(response.body);
 				if (err) return done(err);
 				expect(response.body).to.be.an('array');
 				done();
@@ -102,7 +100,6 @@ describe('Users Route', function () {
 		it('should return a specific user', function (done) {
 			loggedInAgent.get(`/api/users/${user3Id}`).end(function (err, response) {
 				if(err) return done(err);
-				console.log(response.body);
 				expect(response.body).to.exist;
 				expect(response.body.name).to.equal('Jake');
 				done();

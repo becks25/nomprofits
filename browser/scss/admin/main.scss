@@ -1,0 +1,29 @@
+.admin-nav{
+	background-color:$green-dark;
+	width:100%;
+	color:#D3D1DB;
+    padding:1% 2% 1% 2%;
+}
+.even{
+	border:1px solid $purple;
+}
+
+.table-border{
+	border:1px solid $purple;
+	td{
+		padding:1%;
+	}
+}
+
+#admin-views{
+	padding:2%;
+}
+
+.purple{
+	background-color:$purple;
+	color:#D3D1DB;
+}
+
+.purple-border{
+	border-bottom:1px solid $purple;
+}

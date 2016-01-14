@@ -1,0 +1,15 @@
+<!--USERS VIEW-->
+
+<div class="panel-heading purple col-sm-12">
+	<div class="col-sm-4">Name</div>
+	<div class="col-sm-5">Email</div>
+	<div class="col-sm-2">Admin</div>
+	<div class="col-sm-1">X</div>
+</div>
+
+<div ng-repeat="user in users" class="panel-body purple-border">
+	<div class="col-sm-4">{{user.name}}</div>
+	<div class="col-sm-5">{{user.email}}</div>
+	<div class="col-sm-2">{{user.isSuperAdmin}}</div>
+	<div class="col-sm-1">X</div>
+</div>
