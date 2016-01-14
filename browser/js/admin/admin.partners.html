@@ -1,1 +1,7 @@
 <!--PARTNERS VIEW-->
+
+
+<div ng-repeat="partner in partners | orderBy: 'name'" class="col-sm-4 col-xs-12">
+	<h3>{{partner.name}}</h3>
+	<p>{{partner.about | limitTo: 50}}...</p>
+</div>

@@ -22,6 +22,8 @@ var Promise = require('bluebird');
 var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
+var Partner = Promise.promisifyAll(mongoose.model('Partner'));
+
 
 var seedUsers = function () {
 
@@ -42,10 +44,30 @@ var seedUsers = function () {
 
 };
 
+var seedPartners = function() {
+    var partners = [
+        {
+            name: 'EatWith',
+            logo: 'http://nomprofits.weebly.com/uploads/5/8/1/8/58188119/2279676_orig.jpg',
+            about: 'EatWith is a global community that lets you enjoy authentic and intimate dining experiences in people\'s homes.',
+            url: 'http://www.eatwith.com/'
+        },
+        {
+            name: 'Orbital NYC',
+            about: 'Orbital is a space to do awesome stuff.',
+            logo: 'http://nomprofits.weebly.com/uploads/5/8/1/8/58188119/5140460.jpg?161',
+            url: 'http://www.orbitalnyc.com/'
+        }
+    ];
+
+    return Partner.createAsync(partners);
+};
+
 connectToDb.then(function () {
     User.findAsync({}).then(function (users) {
         if (users.length === 0) {
-            return seedUsers();
+            return seedUsers()
+                .then(seedPartners);
         } else {
             console.log(chalk.magenta('Seems to already be user data, exiting!'));
             process.kill(0);
