@@ -1,8 +1,15 @@
 .admin-nav{
 	background-color:$green-dark;
 	width:100%;
-	color:#D3D1DB;
-    padding:1% 2% 1% 2%;
+
+    a{
+		color:#D3D1DB;
+
+		&:hover, &:active, &:focus{
+			color:#222;
+		}
+    }
+
 }
 .even{
 	border:1px solid $purple;

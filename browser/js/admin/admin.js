@@ -46,4 +46,10 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
     $scope.chefs = chefs;
     
 
+    $scope.items = [
+                { label: 'Users', state: 'admin.users' },
+                { label: 'Events', state: 'admin.events' },
+                { label: 'Partners', state:'admin.partners' },
+                { label: 'Chefs', state:'admin.chefs' }
+            ];
 });
