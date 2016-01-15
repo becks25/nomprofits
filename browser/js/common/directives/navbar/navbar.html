@@ -1,9 +1,12 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">
             Nomprofits
         </div>
-        <ul class="nav navbar-nav navbar-right">
+
+        <i class="fa fa-3x fa-bars fa-white navbar-toggler visible-xs-12 pull-right"></i>
+        
+        <ul class="nav navbar-nav navbar-right hidden-xs">
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
@@ -13,6 +16,7 @@
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>
         </div> -->
+        
     </div>
 </nav>
 
