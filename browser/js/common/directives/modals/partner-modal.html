@@ -1,0 +1,38 @@
+{{partner}}
+orig: {{partner_orig}}
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="name" class="col-sm-2 control-label">Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="name" placeholder="name" ng-model="partner.name">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="url" class="col-sm-2 control-label">URL</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="url" placeholder="url" ng-model="partner.url">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="about" class="col-sm-2 control-label">About</label>
+		<div class="col-sm-10">
+			<textarea class="form-control" id="about" placeholder="about" ng-model="partner.about"></textarea>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="logo" class="col-sm-2 control-label">Logo</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="logo" placeholder="logo" ng-model="partner.logo">
+		</div>
+	</div>
+</form>
+
+
+<p class="text-center">
+			<button class="btn btn-success" ng-click="save_partner()">Save</button>
+			<button class="btn btn-default" ng-click="close()">Close</button>
+			<button class="btn btn-danger" ng-click="delete_partner()">Delete</button>
+		</p>

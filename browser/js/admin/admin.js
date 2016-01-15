@@ -39,7 +39,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events, partners, chefs, UserFactory) {
+app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events, partners, chefs, UserFactory, $uibModal, CurrentFactory) {
     $scope.users = users;
     $scope.events = events;
     $scope.partners = partners;
@@ -71,4 +71,13 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
               console.log('error?');
             });
     };
+
+    $scope.open = function (partner) {
+        console.log(partner);
+            CurrentFactory.currentPartner = partner;
+            var modalInstance = $uibModal.open({
+              templateUrl: 'js/common/directives/modals/partner-modal.html',
+              controller: 'partnerModalCtrl'
+            });
+          }
 });

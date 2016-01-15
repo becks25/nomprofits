@@ -34,3 +34,17 @@
 .purple-border{
 	border-bottom:1px solid $purple;
 }
+
+.admin_partner{
+	border:1px solid white;
+
+	h3{
+		color:$purple;
+	}
+	
+	&:hover{
+		border:1px solid $purple;
+		border-radius:5px;
+		background-color:#EAE9E9;
+	}
+}
