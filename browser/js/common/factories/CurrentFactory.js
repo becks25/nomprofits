@@ -1,5 +1,6 @@
 app.factory('CurrentFactory', function() {
     return {
-    	currentPartner: ''
+    	currentPartner: '',
+      currentChef:''
     };
 });

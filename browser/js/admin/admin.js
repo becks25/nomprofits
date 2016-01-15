@@ -79,5 +79,13 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
               templateUrl: 'js/common/directives/modals/partner-modal.html',
               controller: 'partnerModalCtrl'
             });
-          }
+    };
+
+    $scope.open_chef = function(chef){
+        CurrentFactory.currentChef = chef;
+        var modalInstance = $uibModal.open({
+          templateUrl: 'js/common/directives/modals/chef-modal.html',
+          controller: 'chefModalCtrl'
+        });
+    }
 });

@@ -1,1 +1,22 @@
 <!--CHEFS VIEW-->
+
+<div class="col-sm-6">
+    <div class="input-group">
+      	<input type="text" class="form-control" placeholder="Search for chef">
+      	<span class="input-group-btn">
+        	<button class="btn btn-default" type="button">Go!</button>
+    	</span>
+    </div>
+</div>
+
+<div class="col-sm-6">
+	<button class="btn btn-info" ng-click="open_chef()">Add new chef</button>
+</div>
+
+<div class="col-sm-12">
+<div ng-repeat="chef in chefs | orderBy: 'name'" class="col-sm-4 col-xs-12 admin_partner" ng-click="open_chef(chef)">
+	<h3>{{chef.name}}</h3>
+	<p>{{chef.about | limitTo: 50}}...</p>
+</div>
+
+</div>

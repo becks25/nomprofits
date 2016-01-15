@@ -23,6 +23,7 @@ var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
 var Partner = Promise.promisifyAll(mongoose.model('Partner'));
+var Chef = Promise.promisifyAll(mongoose.model('Chef'));
 
 
 var seedUsers = function () {
@@ -31,12 +32,14 @@ var seedUsers = function () {
         {
             email: 'Beckylee@email',
             name: 'Beckylee',
-            password: 'password'
+            password: 'password',
+            isSuperAdmin: true
         },
         {
             email: 'Laura@email',
             name:'Laura',
-            password: 'password'
+            password: 'password',
+            isSuperAdmin: true
         }
     ];
 
@@ -63,11 +66,29 @@ var seedPartners = function() {
     return Partner.createAsync(partners);
 };
 
+var seedChefs = function() {
+    var chefs = [
+        {
+            name:'Isabelle Nguyen',
+            image:'http://nomprofits.weebly.com/uploads/5/8/1/8/58188119/5509563.png?194',
+            about: ' is no stranger to the kitchen. She has been cooking since she was 5,  preparing multi-course meals for her family at the age of 10, and catering for birthday parties and private events since her teens. After moving from Texas to NYC, she continued to cook, incorporating bold flavors from her Southern and Vietnamese roots. In 2013, Chef Isabelle decided to immersed herself in the culinary world by working at some of the top rated restaurants in New York City to continue to refine her skills. In 2014, she launched The Art of Pho as a conceptual culinary pop up focusing on her mother\'s beloved pho recipe, fine tuning it to make it more healthful. The result is a stunning clear broth that is intensively flavorful due to 16 hours of patient simmering. She has sold out all 3 seatings of the Art of Pho. She aims to continue to introduce New Yorkers of all stripes to her modern-style Vietnamese cuisine. '
+        },
+        {
+            name: 'Angelina Lopez',
+            image: 'http://nomprofits.weebly.com/uploads/5/8/1/8/58188119/1439756452.png',
+            about: ' works in education innovation by day, and is a baker and pastry chef by night. She comes from a long line of dessert-makers; her parents own and run a bakery that thrills the taste buds of Floridians. She loves pulling together unique flavor combinations and making desserts that are visually stunning in addition to being delicious. Angelina has designed and prepared pastry displays for weddings, and aims to one-day stage a pop-up showcasing her creations at a surprise venue near you (look out for it!). '
+        }
+    ];
+
+    return Chef.createAsync(chefs);
+};
+
 connectToDb.then(function () {
     User.findAsync({}).then(function (users) {
         if (users.length === 0) {
             return seedUsers()
-                .then(seedPartners);
+                .then(seedPartners)
+                .then(seedChefs);
         } else {
             console.log(chalk.magenta('Seems to already be user data, exiting!'));
             process.kill(0);
