@@ -39,7 +39,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events, partners, chefs) {
+app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events, partners, chefs, UserFactory) {
     $scope.users = users;
     $scope.events = events;
     $scope.partners = partners;
@@ -52,4 +52,23 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
                 { label: 'Partners', state:'admin.partners' },
                 { label: 'Chefs', state:'admin.chefs' }
             ];
+
+    $scope.newUser = {
+        name: '',
+        email: '',
+        isSuperAdmin: false
+    };
+
+    $scope.saveUser = () => {
+        console.log($scope);
+        UserFactory.create($scope.newUser)
+            .then(user => {
+              console.log('success!');
+              $scope.newUser = {};
+//              $scope.addUser.$setPristine();
+              $scope.users.push(user);
+            }).catch(() => {
+              console.log('error?');
+            });
+    };
 });
