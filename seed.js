@@ -24,7 +24,7 @@ var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
 var Partner = Promise.promisifyAll(mongoose.model('Partner'));
 var Chef = Promise.promisifyAll(mongoose.model('Chef'));
-
+var Event = Promise.promisifyAll(mongoose.model('Event'));
 
 var seedUsers = function () {
 
@@ -83,12 +83,29 @@ var seedChefs = function() {
     return Chef.createAsync(chefs);
 };
 
+var seedEvents = function() {
+    var events = {
+        title: 'Nomprofits 1: Education & Youth Development',
+        date: 'September 19, 2015',
+        time: '6:00pm',
+        price: 45,
+        place: 'Orbital NYC',
+        location: '155 Rivington Street, New York, NY 10002',
+        url: 'https://www.eventbrite.com/e/nomprofits-1-education-youth-development-tickets-18319937426',
+        about: 'The first Nomprofits event will showcase three amazing nonprofits in the education and youth development spaces. Over the course of the evening, you\'ll hear short presentations from leaders of each of the non-profits while enjoying a delicious dinner with friends, old and new. We\'re also planning some entertainment for the evening--it\'ll be a great time. The nonprofits presenting at the education and youth development dinner are',
+        menu: '1st Course: Braised Pork with Quail Egg over Crispy Rice Cake, 2nd Course: Grilled Pork Summer Rolls with Fish Dipping Sauce, 3rd Course: Beef Pho Noodle Soup with a Fragrant 16 Hour Broth, Rare Beef, and Handmade Meatballs, 4th Course: Dessert! There will also be a vegetarian option, served upon request.'
+    }
+
+    return Event.createAsync(events);
+}
+
 connectToDb.then(function () {
     User.findAsync({}).then(function (users) {
         if (users.length === 0) {
             return seedUsers()
                 .then(seedPartners)
-                .then(seedChefs);
+                .then(seedChefs)
+                .then(seedEvents);
         } else {
             console.log(chalk.magenta('Seems to already be user data, exiting!'));
             process.kill(0);

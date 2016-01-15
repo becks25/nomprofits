@@ -9,4 +9,23 @@
 	</div>
 </nav>
 
-<div id="admin-views" ui-view></div>
+<div id="admin-views" ui-view>
+	<div class="panel-heading">
+		<h2>Overview</h2>
+	</div>
+
+	<div class="panel-body">
+		<p>
+			<b># Events: </b> 
+			{{events.length}}
+		</p>
+		<p>
+			<b># Partners: </b>
+			{{partners.length}}
+		</p>
+		<p>
+			<b># Chefs: </b>
+			{{chefs.length}}
+		</p>
+	</div>
+</div>

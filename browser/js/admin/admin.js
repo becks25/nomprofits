@@ -47,6 +47,7 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
     
 
     $scope.items = [
+                { label: 'Overview', state: 'admin'},
                 { label: 'Users', state: 'admin.users' },
                 { label: 'Events', state: 'admin.events' },
                 { label: 'Partners', state:'admin.partners' },
@@ -86,6 +87,14 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
         var modalInstance = $uibModal.open({
           templateUrl: 'js/common/directives/modals/chef-modal.html',
           controller: 'chefModalCtrl'
+        });
+    };
+
+    $scope.open_event = function(event){
+        CurrentFactory.currentEvent = event;
+        var modalInstance = $uibModal.open({
+          templateUrl: 'js/common/directives/modals/event-modal.html',
+          controller: 'eventModalCtrl'
         });
     }
 });

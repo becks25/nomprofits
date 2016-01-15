@@ -14,6 +14,9 @@ var schema = new mongoose.Schema({
     price: {
         type: Number
     },
+    place: {
+        type:String
+    },
     location: {
         type: String
     },
@@ -33,7 +36,10 @@ var schema = new mongoose.Schema({
     partners: [{
         type: objId,
         ref: 'Partner'
-    }]
+    }],
+    menu: {
+        type:String
+    }
 });
 
 
