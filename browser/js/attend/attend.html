@@ -1,0 +1,67 @@
+<div class="attending">
+	<div class="panel-heading">
+		<h1>{{attend.title}}</h1>
+	</div>
+
+	<div class="panel-body">
+
+		<div class="col-sm-6">
+
+			<p><b>When: </b> {{attend.date}}</p>
+			<p><b>Where: </b> {{attend.place}}</p>
+			<p><b>Price: </b> ${{attend.price}}</p>
+
+		</div>
+
+		<div class="col-sm-6">
+			<button class="btn btn-large btn-default"><h2>Attend</h2></button>
+		</div>
+	</div>
+
+</div>
+	<div class="panel-body box">
+		<h3>About</h3>
+
+		<p>{{attend.about}}</p>
+	</div>
+
+<div class="attending">
+	<div class="panel-body include-background">
+		<h3>Menu</h3>
+
+		<p>{{attend.menu}}</p>
+	</div>
+</div>
+
+	<div class="panel-body">
+		<h3>Chefs</h3>
+
+		<p>{{attend.chefs || 'TBA'}}</p>
+	</div>
+
+<div class="attending">
+
+	<div class="panel-body">
+		<h3>Partners</h3>
+
+		<p>{{attend.partners || 'TBA'}}</p>
+	</div>
+
+</div>
+	<div class="panel-body">
+		<h3>Location</h3>
+
+		<p>{{attend.location}}</p>
+
+	</div>
+
+<div class="attending">
+	<div class="panel-body">
+		<h3>Questions?</h3>
+
+		<p>
+			<a href="/contact">Contact us </a> and we'll get back to you as soon as possible
+		</p>
+	</div>
+
+</div>
