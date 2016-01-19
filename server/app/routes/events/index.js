@@ -30,16 +30,15 @@ router.get('/:eventId', ensureAuthenticated, (req,res,next) => {
 
 //create a new Event
 router.post('/', ensureAuthenticated, (req, res, next) => {
-    console.log('creating event', req.body);
     if(!req.body.chefs) req.body.chefs = [];
-    req.body.chefsId.forEach(chef => {
-        req.body.chefs.push(chef);
-    });
+    if(req.body.chefsId){
+        req.body.chefsId.forEach(chef => {
+            req.body.chefs.push(chef);
+        });
+    };
 
-    console.log('after', req.body.chefs);
     Event.create(req.body)
         .then(function(newEvent){
-            console.log('created this: ', newEvent);
             res.status(201).send(newEvent);
         })
         .then(null, next); 
@@ -50,9 +49,11 @@ router.put('/:eventId', ensureAuthenticated, (req, res, next) => {
     _.assign(req.foundEvent, req.body);
 
     if(!req.foundEvent.chefs) req.foundEvent.chefs = [];
-    req.body.chefsId.forEach(chef => {
-        req.foundEvent.chefs.push(chef);
-    });
+    if(req.body.chefsId){
+        req.body.chefsId.forEach(chef => {
+            req.foundEvent.chefs.push(chef);
+        });
+    };
 
     req.foundEvent.save()
         .then(events => res.status(200).send(events))

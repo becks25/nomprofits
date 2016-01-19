@@ -68,12 +68,19 @@
 			</div>
 		</div>
 
-		<div ng-repeat="chef in events.chefNames" class="col-sm-10">
-			{{chef}}
+		<div ng-repeat="chef in events.chefNames">
+			<div class="col-sm-2">
+				
+			</div>
+			<div class="col-sm-10">
+				<p>
+					<span class="glyphicon glyphicon-remove text-danger " aria-hidden="true"></span>
+					{{chef}}
+				</p>
+			</div>
 		</div>
 	</div>
 
-	{{events}}	
 </form>
 
 

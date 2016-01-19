@@ -16,7 +16,6 @@ app.controller('eventModalCtrl', function($scope, $uibModalInstance, EventsFacto
                   console.log('saving events');
                   console.log($scope.events_orig.name);
                   if($scope.events_orig.name == undefined){
-                    console.log('yo');
                     EventsFactory.create($scope.events)
                     .then(saved => {
                       console.log('success');
