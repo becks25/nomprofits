@@ -44,6 +44,10 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
     $scope.events = events;
     $scope.partners = partners;
     $scope.chefs = chefs;
+    $scope.user_search;
+    $scope.partnerSearch;
+    $scope.eventSearch;
+    $scope.chefSearch;
 
     $scope.events.map(e => {
         e.chefNames = [];

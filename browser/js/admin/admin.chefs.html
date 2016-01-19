@@ -2,7 +2,7 @@
 
 <div class="col-sm-6">
     <div class="input-group">
-      	<input type="text" class="form-control" placeholder="Search for chef">
+      	<input type="text" class="form-control" placeholder="Search for chef" ng-model="chefSearch">
       	<span class="input-group-btn">
         	<button class="btn btn-default" type="button">
         		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -16,7 +16,7 @@
 </div>
 
 <div class="col-sm-12">
-<div ng-repeat="chef in chefs | orderBy: 'name'" class="col-sm-4 col-xs-12 admin_partner" ng-click="open_chef(chef)">
+<div ng-repeat="chef in chefs | orderBy: 'name' | filter:chefSearch" class="col-sm-4 col-xs-12 admin_partner" ng-click="open_chef(chef)">
 	<h3>{{chef.name}}</h3>
 	<p>{{chef.about | limitTo: 50}}...</p>
 </div>

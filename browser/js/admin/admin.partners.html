@@ -2,7 +2,7 @@
 
 <div class="col-sm-6">
     <div class="input-group">
-      	<input type="text" class="form-control" placeholder="Search for partner">
+      	<input type="text" class="form-control" placeholder="Search for partner" ng-model="partnerSearch">
       	<span class="input-group-btn">
         	<button class="btn btn-default" type="button">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -16,7 +16,7 @@
 </div>
 
 <div class="col-sm-12">
-<div ng-repeat="partner in partners | orderBy: 'name'" class="col-sm-4 col-xs-12 admin_partner" ng-click="open(partner)">
+<div ng-repeat="partner in partners | orderBy: 'name' | filter:partnerSearch" class="col-sm-4 col-xs-12 admin_partner" ng-click="open(partner)">
 	<h3>{{partner.name}}</h3>
 	<p>{{partner.about | limitTo: 50}}...</p>
 </div>
