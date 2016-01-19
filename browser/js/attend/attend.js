@@ -15,6 +15,15 @@ app.config(function ($stateProvider) {
 
 app.controller('attendController', function ($scope, events) {
 
+  $scope.allEvents = events;
+
+  $scope.allEvents.sort((a,b) => {
+    return (new Date(b.date) - new Date(a.date));
+  });
+
+  $scope.attend = $scope.allEvents[0];
+
+  console.log($scope.allEvents);
   $scope.temp = {
       title: 'Testing page',
       date: new Date('February 15, 2016 06:00:00'),
@@ -27,7 +36,7 @@ app.controller('attendController', function ($scope, events) {
 
   }
 
-  $scope.attend = $scope.temp;
+  //$scope.attend = $scope.temp;
 
 
 
