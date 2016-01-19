@@ -47,10 +47,17 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
 
     $scope.events.map(e => {
         e.chefNames = [];
+        e.partnerNames = [];
 
         e.chefs.forEach(chef => {
             $scope.chefs.forEach(c => {
                 if(c._id == chef) e.chefNames.push(c.name);
+            });
+        });
+
+        e.partners.forEach(partner => {
+            $scope.partners.forEach(p => {
+                if(p._id == partner) e.partnerNames.push(p.name);
             });
         });
     });

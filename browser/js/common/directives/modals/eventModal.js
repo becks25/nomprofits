@@ -2,8 +2,10 @@ app.controller('eventModalCtrl', function($scope, $uibModalInstance, EventsFacto
                 $scope.events = CurrentFactory.currentEvent || {};
                 $scope.events_orig = {};
                 $scope.chefs = CurrentFactory.allChefs;
+                $scope.partners = CurrentFactory.allPartners;
 
                 $scope.selected_chef;
+                $scope.selected_partner;
 
                 _.assign($scope.events_orig, CurrentFactory.currentEvent);
 
@@ -44,12 +46,18 @@ app.controller('eventModalCtrl', function($scope, $uibModalInstance, EventsFacto
                 };
 
                 $scope.addchef = () => {
-                  console.log($scope.selected_chef);
-                  console.log(!$scope.events.chefNames);
                   if(!$scope.selected_chef) return;
                   if(!$scope.events.chefsId) $scope.events.chefsId = [];                  
                   $scope.events.chefsId.push($scope.selected_chef);
 
-                  console.log($scope.events);
+                };
+
+                $scope.addpartner = () => {
+                  console.log($scope.selected_partner)
+                  if(!$scope.selected_partner) return;
+                  if(!$scope.events.partnersId) $scope.events.partnersId = [];                  
+                  $scope.events.partnersId.push($scope.selected_partner);
+                  console.log($scope.events.partnersId);
+
                 };
               });

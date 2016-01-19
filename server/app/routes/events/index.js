@@ -37,6 +37,13 @@ router.post('/', ensureAuthenticated, (req, res, next) => {
         });
     };
 
+    if(!req.body.partners) req.body.partners = [];
+    if(req.body.partnersId){
+        req.body.partnersId.forEach(partner => {
+            req.body.partners.push(partner);
+        });
+    };
+
     Event.create(req.body)
         .then(function(newEvent){
             res.status(201).send(newEvent);
@@ -54,6 +61,14 @@ router.put('/:eventId', ensureAuthenticated, (req, res, next) => {
             req.foundEvent.chefs.push(chef);
         });
     };
+
+    if(!req.foundEvent.partners) req.foundEvent.partners = [];
+    if(req.body.partnersId){
+        req.body.partnersId.forEach(partner => {
+            req.foundEvent.partners.push(partner);
+        });
+    };
+
 
     req.foundEvent.save()
         .then(events => res.status(200).send(events))
