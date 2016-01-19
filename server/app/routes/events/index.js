@@ -4,6 +4,7 @@ module.exports = router;
 var mongoose = require('mongoose');
 var _ = require('lodash');
 var Event = mongoose.model('Event');
+var Chef = mongoose.model('Chef');
 
 var ensureAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
@@ -12,6 +13,7 @@ var ensureAuthenticated = function (req, res, next) {
         res.status(401).end();
     }
 };
+
 
 //get all events
 router.get('/', ensureAuthenticated, (req, res, next) => {
@@ -28,8 +30,16 @@ router.get('/:eventId', ensureAuthenticated, (req,res,next) => {
 
 //create a new Event
 router.post('/', ensureAuthenticated, (req, res, next) => {
+    console.log('creating event', req.body);
+    if(!req.body.chefs) req.body.chefs = [];
+    req.body.chefsId.forEach(chef => {
+        req.body.chefs.push(chef);
+    });
+
+    console.log('after', req.body.chefs);
     Event.create(req.body)
         .then(function(newEvent){
+            console.log('created this: ', newEvent);
             res.status(201).send(newEvent);
         })
         .then(null, next); 
@@ -38,6 +48,12 @@ router.post('/', ensureAuthenticated, (req, res, next) => {
 //edit existing Event
 router.put('/:eventId', ensureAuthenticated, (req, res, next) => {
     _.assign(req.foundEvent, req.body);
+
+    if(!req.foundEvent.chefs) req.foundEvent.chefs = [];
+    req.body.chefsId.forEach(chef => {
+        req.foundEvent.chefs.push(chef);
+    });
+
     req.foundEvent.save()
         .then(events => res.status(200).send(events))
         .then(null, next);

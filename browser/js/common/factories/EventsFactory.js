@@ -5,12 +5,12 @@ app.factory('EventsFactory', function(DS, $http) {
         relations: {
             hasMany: {
                 partners: {
-                    localKey: 'partnersId',
-                    localField: 'partners'
+                    localKey: 'partners',
+                    localField: '_partners'
                 },
                 chefs: {
-                	localKey: 'chefsId',
-                	localField: 'chefs'
+                	localKey: 'chefs',
+                	localField: '_chefs'
                 }
             }
         }

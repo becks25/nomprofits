@@ -4,8 +4,8 @@
             Nomprofits
         </div>
 
-        <i class="fa fa-3x fa-bars fa-white navbar-toggler visible-xs-12 pull-right"></i>
-        
+        <i class="fa fa-3x fa-bars fa-white navbar-toggler visible-xs pull-right"></i>
+
         <ul class="nav navbar-nav navbar-right hidden-xs">
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>

@@ -44,6 +44,16 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
     $scope.events = events;
     $scope.partners = partners;
     $scope.chefs = chefs;
+
+    $scope.events.map(e => {
+        e.chefNames = [];
+
+        e.chefs.forEach(chef => {
+            $scope.chefs.forEach(c => {
+                if(c._id == chef) e.chefNames.push(c.name);
+            });
+        });
+    });
     
 
     $scope.items = [
@@ -90,8 +100,11 @@ app.controller('AdminCtrl', function ($scope, AuthService, $state, users, events
         });
     };
 
-    $scope.open_event = function(event){
-        CurrentFactory.currentEvent = event;
+    $scope.open_event = function(events){
+        CurrentFactory.currentEvent = events;
+        CurrentFactory.allChefs = $scope.chefs;
+        CurrentFactory.allPartners = $scope.partners;
+
         var modalInstance = $uibModal.open({
           templateUrl: 'js/common/directives/modals/event-modal.html',
           controller: 'eventModalCtrl'

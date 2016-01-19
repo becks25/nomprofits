@@ -2,6 +2,8 @@ app.factory('CurrentFactory', function() {
     return {
     	currentPartner: '',
       currentChef:'',
-      currentEvent: ''
+      currentEvent: '',
+      allChefs: '',
+      allPartners: ''
     };
 });

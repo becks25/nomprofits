@@ -17,10 +17,10 @@
 
 
 <div class="clearfix"></div>
-<div ng-repeat="event in events" class="col-sm-6 col-xs-12 admin_partner" ng-click="open_event(event)">
+<div ng-repeat="event in events track by $index" class="col-sm-6 col-xs-12 admin_partner" ng-click="open_event(event)">
 	<h4>{{event.title}}</h4>
 	<p><b>When:</b> {{event.date}}</p>
 	<p><b>Where:</b> {{event.place}}</p>
-	<p><b>Chefs: </b> {{event.chefs}}</p>
+	<p><b>Chefs: </b> {{event.chefNames.join(', ')}}</p>
 	<p><b>Partners:</b> {{event.partners}}</p>
 </div>
