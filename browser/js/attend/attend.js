@@ -7,36 +7,55 @@ app.config(function ($stateProvider) {
         resolve: {
           events: (EventsFactory) => {
               return EventsFactory.findAll();
+          },
+          partners: (PartnersFactory) => {
+              return PartnersFactory.findAll();
+          },
+          chefs: (ChefsFactory) => {
+              return ChefsFactory.findAll();
           }
         }
     });
 
 });
 
-app.controller('attendController', function ($scope, events) {
+app.controller('attendController', function ($scope, events, partners, chefs) {
 
   $scope.allEvents = events;
+  $scope.allPartners = partners;
+  $scope.allChefs = chefs;
 
   $scope.allEvents.sort((a,b) => {
     return (new Date(b.date) - new Date(a.date));
   });
 
   $scope.attend = $scope.allEvents[0];
+  $scope.attend.partnerInfo = [];
+  $scope.attend.chefInfo = [];
 
-  console.log($scope.allEvents);
-  $scope.temp = {
-      title: 'Testing page',
-      date: new Date('February 15, 2016 06:00:00'),
-      price: 45,
-      place: 'Somewhere awesome',
-      location: '337 E 13th st, New York, NY 10003',
-      url: '',
-      about: 'The first Nomprofits event will showcase three amazing nonprofits in the education and youth development spaces. Over the course of the evening, you\'ll hear short presentations from leaders of each of the non-profits while enjoying a delicious dinner with friends, old and new. We\'re also planning some entertainment for the evening--it\'ll be a great time. The nonprofits presenting at the education and youth development dinner are',
-      menu: 'Delicious noms'
 
-  }
+  $scope.attend.partners.forEach(partner=>{
+      $scope.allPartners.forEach(p=>{
+        if(p._id == partner){
+          $scope.attend.partnerInfo.push(p);
+        }
+      });
 
-  //$scope.attend = $scope.temp;
+  });
+
+  $scope.attend.chefs.forEach(chef=>{
+      $scope.allChefs.forEach(c=>{
+        console.log(c._id, chef);
+        if(c._id == chef){
+          console.log('match');
+          $scope.attend.chefInfo.push(c);
+          console.log($scope.attend.chefInfo);
+        }
+      });
+
+
+  });
+
 
 
 

@@ -7,7 +7,7 @@
 
 		<div class="col-sm-6">
 
-			<p><b>When: </b> {{attend.date}}</p>
+			<p><b>When: </b> {{attend.date | date: 'medium'}}</p>
 			<p><b>Where: </b> {{attend.place}}</p>
 			<p><b>Price: </b> ${{attend.price}}</p>
 
@@ -19,7 +19,7 @@
 	</div>
 
 </div>
-	<div class="panel-body box">
+	<div class="panel-body">
 		<h3>About</h3>
 
 		<p>{{attend.about}}</p>
@@ -36,7 +36,17 @@
 	<div class="panel-body">
 		<h3>Chefs</h3>
 
-		<p>{{attend.chefs || 'TBA'}}</p>
+		<div ng-repeat="chef in attend.chefInfo" class="col-sm-4 col-xs-12 partner text-center">
+			<div class="col-sm-12 text-center">
+				<a href="{{chef.url}}" target="_blank"><img ng-src="{{chef.image}}" class="partner-img"/></a>
+			</div>
+
+			<h3>{{chef.name}}</h3>
+			<div ng-if="$index%2 === 0" class="clearfix"></div>
+		</div>
+
+
+
 	</div>
 
 <div class="attending">
@@ -44,7 +54,14 @@
 	<div class="panel-body">
 		<h3>Partners</h3>
 
-		<p>{{attend.partners || 'TBA'}}</p>
+		<div ng-repeat="partner in attend.partnerInfo" class="col-sm-4 col-xs-12 partner text-center">
+			<div class="col-sm-12 text-center">
+				<a href="{{partner.url}}" target="_blank"><img ng-src="{{partner.logo}}" class="partner-img"/></a>
+			</div>
+
+			<h3>{{partner.name}}</h3>
+			<div ng-if="$index%2 === 0" class="clearfix"></div>
+		</div>
 	</div>
 
 </div>
