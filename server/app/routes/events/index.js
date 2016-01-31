@@ -16,14 +16,14 @@ var ensureAuthenticated = function (req, res, next) {
 
 
 //get all events
-router.get('/', ensureAuthenticated, (req, res, next) => {
+router.get('/', (req, res, next) => {
     Event.find().exec()
         .then(events => res.status(200).send(events))
         .then(null, next);
 });
 
 //get one
-router.get('/:eventId', ensureAuthenticated, (req,res,next) => {
+router.get('/:eventId', (req,res,next) => {
      res.send(req.foundEvent);
 
 });

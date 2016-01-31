@@ -14,7 +14,7 @@ var ensureAuthenticated = function (req, res, next) {
 };
 
 //get all Partners
-router.get('/', ensureAuthenticated, (req, res, next) => {
+router.get('/', (req, res, next) => {
     Partner.find().exec()
         .then(partner => res.status(200).send(partner))
         .then(null, next);

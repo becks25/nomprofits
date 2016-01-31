@@ -14,7 +14,7 @@ var ensureAuthenticated = function (req, res, next) {
 };
 
 //get all Chefs
-router.get('/', ensureAuthenticated, (req, res, next) => {
+router.get('/', (req, res, next) => {
     Chef.find().exec()
         .then(chef => res.status(200).send(chef))
         .then(null, next);
